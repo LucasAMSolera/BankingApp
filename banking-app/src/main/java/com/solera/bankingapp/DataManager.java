@@ -2,6 +2,7 @@ package com.solera.bankingapp;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import com.solera.bankingapp.models.User;
 
@@ -13,7 +14,24 @@ public class DataManager {
 		users.add(new User("Becario", "Soleriano", "solera@solera.com", "bootcamp2", 10000));
 		users.add(new User("Adrian", "Botello", "adrianvaso", "1234", 200));
 		users.add(new User("Felipe", "Giro", "girod360", "4321", 36000));
-		
 	}
-
+	
+	public List<User> getAll(){
+		return users;
+	}
+	
+	public User getOne(String id){
+		Predicate<? super User> predicate = user -> user.getUsername().equals(id);
+		return users.stream().filter(predicate).findFirst().orElse(null);
+	}
+	
+	public User saveOne(User myUser) {
+		users.add(myUser);
+		return myUser;
+	}
+	
+	public void deleteOne(String id) {
+		Predicate<? super User> predicate = user -> user.getUsername().equals(id);
+		users.removeIf(predicate);
+	}
 }
