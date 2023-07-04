@@ -1,5 +1,7 @@
 package com.solera.bankingapp.models;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class BankAccount {
 	private String nombre;
@@ -23,15 +25,29 @@ public class BankAccount {
 	public void setTransactions(List<Transaction> transactions) {
 		this.transactions = transactions;
 	}
-	public BankAccount(String nombre, int id, List<Transaction> transactions) {
+	public BankAccount(String nombre, List<Transaction> transactions) {
 		super();
 		this.nombre = nombre;
-		this.id = id;
+		this.id = RandomId();
 		this.transactions = transactions;
 	}
+	public BankAccount(String nombre, String emitter) {
+		super();
+		this.nombre = nombre;
+		this.id = RandomId();
+		this.transactions = FillTransactions(emitter);
+	}
 	
+	private List<Transaction> FillTransactions(String emitter){
+		List<Transaction> transactions = new ArrayList<Transaction>();
+		transactions.add(new Transaction(emitter, "jonathan", this.id, 12345678, -200));
+		return transactions;
+	}
 	
-	
+	private int RandomId() {
+		Random rnd = new Random();
+		return rnd.nextInt(99999999-10000000+1)+10000000;
+	}
 	@Override
 	public String toString() {
 		return "BankAccount nombre=" + nombre + ", id=" + id + ", transactions=" + transactions;

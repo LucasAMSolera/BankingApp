@@ -1,4 +1,5 @@
 package com.solera.bankingapp.models;
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
@@ -46,9 +47,7 @@ public class User {
 		this.banks = banks;
 	}
 	
-	
-	public User(String firstName, String lastName, String username, String password, int balance,
-			List<BankAccount> banks) {
+	public User(String firstName, String lastName, String username, String password, int balance, List<BankAccount> banks) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -57,10 +56,27 @@ public class User {
 		this.balance = balance;
 		this.banks = banks;
 	}
+	
+	public User(String firstName, String lastName, String username, String password, int balance) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.username = username;
+		this.password = password;
+		this.balance = balance;
+		this.banks = FillBanks();
+	}
+	
 	@Override
 	public String toString() {
 		return "User firstName=" + firstName + ", lastName=" + lastName + ", username=" + username + ", password="
 				+ password + ", balance=" + balance + ", banks=" + banks;
+	}
+	
+	private List<BankAccount> FillBanks() {
+		List<BankAccount> banks = new ArrayList<BankAccount>();
+		banks.add(new BankAccount("VVBA Holdings", this.username));
+		return banks;
 	}
 	
 }
