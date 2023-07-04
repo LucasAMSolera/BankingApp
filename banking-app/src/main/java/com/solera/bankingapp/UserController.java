@@ -22,12 +22,12 @@ public class UserController {
 	}
 	
 	@GetMapping("/users/{id}")
-	public String listUsers (@PathVariable String id)
+	public String listOneUser (@PathVariable String id)
 	{
 		return dataM.getOne(id).toString();
 	}
 	@GetMapping("/users")
-	public String listUsers ()
+	public String listAllUsers ()
 	{
 		return dataM.getAll().toString();
 	}
