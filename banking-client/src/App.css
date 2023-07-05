@@ -42,13 +42,20 @@
   justify-content: left;
 }
 
+#personal{
+  display: flex;
+  flex-direction: column;
+}
+
 #personal-title{
-  width: 300px;
+  font-style: italic;
+  font-size: 35px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 
 #personal-navbar {
-  display: flex;
+  display: inline-block;
   position: relative;
   background-color: #4563BF;
   justify-content: center;
@@ -72,7 +79,8 @@
 }
 
 #personal-transactions-model{
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
 }
 
 #personal-transactions-model-info{
@@ -93,33 +101,31 @@ select {
   width: 200px;
 }
 
-
-.center{
-  display: flex;
-  position: absolute;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
+.menu-icon{
+  cursor: pointer;
+  max-width: 100px;
 }
 
-.center-v{
-  display: flex;
+.notification-icon{
+  cursor: pointer;
 }
 
-.center-h{
-  display: flex;
-  justify-content: center;
+.like-icon{
+  cursor: pointer;
 }
 
-#form{
-  height: 250px;
-  width: 250px;
+.comment-icon{
+  cursor: pointer;
 }
 
 .new-button {
   background-color: #04D94F;
+  color: white;
+  font-style: italic;
   border: none;
   border-radius: 3px;
+  cursor: pointer;
+  max-height: 30px;
 }
 
 .nav-button {
@@ -138,3 +144,35 @@ select {
 .nav-button:focus {
   outline: none;
 }
+
+.center{
+  display: flex;
+  padding-top: 20%;
+  position: absolute;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-v{
+  display: flex;
+}
+
+.center-h{
+  display: flex;
+  justify-content: center;
+}
+
+#form{
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  width: 250px;
+}
+
+input{
+  border-radius: 5px;
+  border-color: lightgray;
+}
+
+

@@ -33,11 +33,12 @@ export function Personal() {
             <p>Personal</p>
             <div id="personal-transactions-model">
                 <div id="personal-transactions-model-picture">
-                    <image/>
+                    <img src="../pictures/pfp.png"/>
+                    
                 </div>
                 <div id="personal-transactions-model-info">
-                    <h2>paid</h2>
-                    <p>Payment: </p>
+                    <h2>"Someone" paid "someone else"</h2>
+                    <p>Payment: "paymentId"</p>
                     <div id="personal-transactions-model-info-social">
                         <div class="like-icon">&#x1F44D;</div>
                         <p>0</p>
