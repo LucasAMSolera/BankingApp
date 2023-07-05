@@ -1,5 +1,7 @@
 import { myUser } from "../managers/dataManager"; 
 import {useRef} from "react";
+import {Post} from "../managers/serverManager"; 
+
 export function SignUp() {
 
     var fname = useRef();
@@ -35,6 +37,7 @@ export function SignUp() {
         
         if(ValidateUser() && ValidatePassword()){
             console.log(myUser);
+            console.log(Post(myUser));
         }
         else if(ValidateUser() && !ValidatePassword()){
             alert("The passwords do not match!")
