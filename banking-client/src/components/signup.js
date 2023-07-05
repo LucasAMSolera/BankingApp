@@ -33,13 +33,22 @@ export function SignUp() {
         myUser.password = fpass.current.value
     }
 
-    const SubmitUser = function(event){
+    const SubmitUser = async function(event){
         event.preventDefault();
 
         if(ValidateUser() && ValidatePassword()){
             AssignValues();
             console.log(myUser);
-            Post(myUser);
+            var user = await Post(myUser)
+            console.log(user);
+            myUser.firstName = user.firstName
+            myUser.lastName = user.lastName
+            myUser.username = user.username
+            myUser.password = user.password
+            myUser.balance = user.balance
+            myUser.banks = user.banks
+            console.log(myUser);
+            window.location.replace("./personal");
         }
         else if(ValidateUser() && !ValidatePassword()){
             alert("The passwords do not match!")

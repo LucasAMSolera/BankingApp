@@ -91,8 +91,8 @@ public class User {
 	
 	@Override
 	public String toString() {
-		return "{\"firstName\":\"" + firstName + "\", \"lastName\":\"" + lastName + "\", \"username\":\"" + username + "\", \"password\":"
-				+ password + ", \"balance\":" + balance + ", \"banks\":" + banks+"}";
+		return "{\"firstName\":\"" + firstName + "\", \"lastName\":\"" + lastName + "\", \"username\":\"" + username + "\", \"password\":\""
+				+ password + "\", \"balance\":" + balance + ", \"banks\":" + banks+"}";
 	}
 	
 	private List<BankAccount> FillBanks() {
