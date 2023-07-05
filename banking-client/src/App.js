@@ -5,11 +5,14 @@ import {
   Routes,
   Route
 } from "react-router-dom";
+import {useRef} from "react";
 
 import { NavBarDisplay } from './components/navBarDisplay';
 import { Home } from './components/home.js';
 import { SignUp } from './components/signup.js';
 import { Personal } from './components/personal.js';
+
+export const nameRef = useRef;
 
 function App() {
   return (

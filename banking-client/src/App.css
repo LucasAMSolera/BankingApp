@@ -38,10 +38,26 @@
 }
 
 #personal-navbar {
-  background-color: blue;
+  display: flex;
+  background-color: #4563BF;
   color: white;
 }
 
+#personal-navbar-frow {
+  justify-content: space-between;
+}
+
+#personal-navbar-lrow {
+  justify-content: center;
+}
+
+select {
+  border: 1px solid #4563BF;
+  border-radius: 5px;
+  background-color: transparent;
+  padding: 8px;
+  width: 200px;
+}
 
 
 .center{
@@ -64,4 +80,20 @@
 #form{
   height: 250px;
   width: 250px;
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.nav-button:focus {
+  outline: none;
+}
+
+.nav-button.selected {
+  border-bottom: 2px solid white;
 }

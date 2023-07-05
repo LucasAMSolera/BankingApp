@@ -1,6 +1,2 @@
-var myUser = {};
-var users = {};
-
-function HandleSubmit(){
-    console.log("hello");
-}
+export const myUser = {};
+export const users = {};
