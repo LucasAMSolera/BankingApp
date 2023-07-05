@@ -37,23 +37,57 @@
   }
 }
 
+#nav-bar {
+  display: grid;
+  justify-content: left;
+}
+
+#personal-title{
+  width: 300px;
+}
+
+
 #personal-navbar {
   display: flex;
+  position: relative;
   background-color: #4563BF;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   color: white;
 }
 
 #personal-navbar-frow {
+  display: flex;
   justify-content: space-between;
 }
 
 #personal-navbar-lrow {
+  display: flex;
   justify-content: center;
 }
 
+#personal-navbar-frow-topright{
+  display: flex;
+}
+
+#personal-transactions-model{
+  display: flex;
+}
+
+#personal-transactions-model-info{
+  display: flex;
+  flex-direction: column;
+}
+
+#personal-transactions-model-info-social{
+  display: flex;
+}
+
 select {
+  display: inline-block;
   border: 1px solid #4563BF;
-  border-radius: 5px;
+  border-radius: 20px;
   background-color: transparent;
   padding: 8px;
   width: 200px;
@@ -82,18 +116,25 @@ select {
   width: 250px;
 }
 
+.new-button {
+  background-color: #04D94F;
+  border: none;
+  border-radius: 3px;
+}
+
 .nav-button {
   background: none;
   border: none;
+  color: white;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
 }
 
-.nav-button:focus {
-  outline: none;
+#mine {
+  border-bottom: 2px solid white;
 }
 
-.nav-button.selected {
-  border-bottom: 2px solid white;
+.nav-button:focus {
+  outline: none;
 }

@@ -3,9 +3,9 @@ export function Personal() {
         <nav id="personal-navbar">
             <div id="personal-navbar-frow">
                 <div class="menu-icon">&#9776;</div>
-                <label>Real World App</label>
+                <p id="personal-title">Real World App</p>
                 <div id="personal-navbar-frow-topright">
-                    <button>$ NEW</button>
+                    <button class="new-button">$ NEW</button>
                     <div class="notification-icon">&#128276;</div>
                 </div>
             </div>
@@ -30,23 +30,23 @@ export function Personal() {
                 <option value="200">Amount: $0 - $200</option>
                 <option value="50">Amount: $0 - $50</option>
             </select>
-            <label>Personal</label>
+            <p>Personal</p>
             <div id="personal-transactions-model">
                 <div id="personal-transactions-model-picture">
                     <image/>
                 </div>
                 <div id="personal-transactions-model-info">
                     <h2>paid</h2>
-                    <label>Payment: </label>
+                    <p>Payment: </p>
                     <div id="personal-transactions-model-info-social">
                         <div class="like-icon">&#x1F44D;</div>
-                        <label>0</label>
+                        <p>0</p>
                         <div class="comment-icon">&#128172;</div>
-                        <label>0</label>
+                        <p>0</p>
                     </div>
                 </div>
                 <div id="personal-transactions-model-value">
-
+                    <p>-$357</p>
                 </div>
             </div>
         </div>
