@@ -36,3 +36,32 @@
     transform: rotate(360deg);
   }
 }
+
+#personal-navbar {
+  background-color: blue;
+  color: white;
+}
+
+
+
+.center{
+  display: flex;
+  position: absolute;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-v{
+  display: flex;
+}
+
+.center-h{
+  display: flex;
+  justify-content: center;
+}
+
+#form{
+  height: 250px;
+  width: 250px;
+}
