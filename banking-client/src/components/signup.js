@@ -12,32 +12,34 @@ export function SignUp() {
 
     function ValidateUser(){
         return(
-            myUser.fname !== "" &&
-            myUser.lname !== "" &&
-            myUser.username !== "" &&
-            myUser.fpass !== "" &&
-            myUser.lpass !== ""
+            fname.current.value !== "" &&
+            lname.current.value !== "" &&
+            username.current.value !== "" &&
+            fpass.current.value !== "" &&
+            lpass.current.value !== ""
         )
     }
     
     function ValidatePassword(){
         return(
-            myUser.fpass == myUser.lpass
+            fpass.current.value === lpass.current.value
         )
     }
 
-    const sayHi = function(event){
+    function AssignValues(){
+        myUser.firstName = fname.current.value
+        myUser.lastName = lname.current.value
+        myUser.username = username.current.value
+        myUser.password = fpass.current.value
+    }
+
+    const SubmitUser = function(event){
         event.preventDefault();
 
-        myUser.fname = fname.current.value
-        myUser.lname = lname.current.value
-        myUser.username = username.current.value
-        myUser.fpass = fpass.current.value
-        myUser.lpass = lpass.current.value
-        
         if(ValidateUser() && ValidatePassword()){
+            AssignValues();
             console.log(myUser);
-            console.log(Post(myUser));
+            Post(myUser);
         }
         else if(ValidateUser() && !ValidatePassword()){
             alert("The passwords do not match!")
@@ -60,7 +62,7 @@ export function SignUp() {
                     <label htmlFor="lpass">Confirm Password:</label><br/>
                     <input type="password" id="lpass" name="lpass" ref={lpass}></input><br/>
 
-                    <button type="submit" onClick={sayHi}>SIGN UP</button>
+                    <button type="submit" onClick={SubmitUser}>SIGN UP</button>
                 </form>
             </div>)
 }

@@ -1,16 +1,24 @@
+import { useNavigate } from "react-router-dom";
+
 const myServerIP='http://localhost:8080/'
 
-export function Post(){
+export async function Post(myUser){
 
     var updatedUser;
 
     const requestOptions = {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({title: 'React POST Request' })
+        body: JSON.stringify(myUser)
     };
-    fetch(myServerIP+'/, requestOptions')
+    const response = await fetch(myServerIP+'users/create', requestOptions);
+    const result = await response.json();
+    console.log(result);
+
+    /*
         .then(response => response.json())
-        .then(data => updatedUser = data);
+        .then(data => updatedUser = data);*/
+    const navigate = useNavigate();
+    navigate("/");
     return updatedUser;    
 }

@@ -1,6 +1,7 @@
 package com.solera.bankingapp.models;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class User {
 	private String firstName;
@@ -47,6 +48,27 @@ public class User {
 		this.banks = banks;
 	}
 	
+	public User(Map<String, String> map) {
+		super();
+		System.out.println("Constructor with HashMap");
+		this.firstName = map.get("firstName");
+		this.lastName = map.get("lastName");
+		this.username = map.get("username");
+		this.password = map.get("password");
+		this.balance = 0;
+		this.banks = new ArrayList<BankAccount>();
+	}
+	
+	public User(String firstName, String lastName, String username, String password) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.username = username;
+		this.password = password;
+		this.balance = 0;
+		this.banks = new ArrayList<BankAccount>();
+	}
+	
 	public User(String firstName, String lastName, String username, String password, int balance, List<BankAccount> banks) {
 		super();
 		this.firstName = firstName;
@@ -69,8 +91,8 @@ public class User {
 	
 	@Override
 	public String toString() {
-		return "User firstName=" + firstName + ", lastName=" + lastName + ", username=" + username + ", password="
-				+ password + ", balance=" + balance + ", banks=" + banks;
+		return "{\"firstName\":\"" + firstName + "\", \"lastName\":\"" + lastName + "\", \"username\":\"" + username + "\", \"password\":"
+				+ password + ", \"balance\":" + balance + ", \"banks\":" + banks+"}";
 	}
 	
 	private List<BankAccount> FillBanks() {
