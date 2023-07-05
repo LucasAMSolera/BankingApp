@@ -1,3 +1,5 @@
+const myServerIP='http://localhost:8080/'
+
 export function Post(){
 
     var updatedUser;
@@ -7,7 +9,7 @@ export function Post(){
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({title: 'React POST Request' })
     };
-    fetch('https://reqres.in/api/posts', requestOptions)
+    fetch(myServerIP+'/, requestOptions')
         .then(response => response.json())
         .then(data => updatedUser = data);
     return updatedUser;    
