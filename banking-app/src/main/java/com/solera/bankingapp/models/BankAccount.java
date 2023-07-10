@@ -50,7 +50,7 @@ public class BankAccount {
 	}
 	@Override
 	public String toString() {
-		return "BankAccount nombre=" + nombre + ", id=" + id + ", transactions=" + transactions;
+		return "{\"nombre\":\"" + nombre + "\", \"id\":" + id + ", \"transactions\":" + transactions+"}";
 	}
 	
 }

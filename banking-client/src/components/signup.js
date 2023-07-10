@@ -39,16 +39,23 @@ export function SignUp() {
         if(ValidateUser() && ValidatePassword()){
             AssignValues();
             console.log(myUser);
-            var user = await Post(myUser)
-            console.log(user);
-            myUser.firstName = user.firstName
-            myUser.lastName = user.lastName
-            myUser.username = user.username
-            myUser.password = user.password
-            myUser.balance = user.balance
-            myUser.banks = user.banks
-            console.log(myUser);
-            window.location.replace("./personal");
+            var pkg = await Post(myUser)
+            console.log(pkg);
+
+            if(pkg.status == false){
+                alert("The user already exists and the password is incorrect!")
+                console.log("Mi usuario desactualizado="+myUser.username);
+            }
+            else{
+                myUser.firstName = pkg.user.firstName
+                myUser.lastName = pkg.user.lastName
+                myUser.username = pkg.user.username
+                myUser.password = pkg.user.password
+                myUser.balance = pkg.user.balance
+                myUser.banks = pkg.user.banks
+                console.log(myUser);
+                //window.location.replace("./personal");
+            }
         }
         else if(ValidateUser() && !ValidatePassword()){
             alert("The passwords do not match!")
@@ -58,20 +65,39 @@ export function SignUp() {
         }
     }
 
-    return (<div alt="Sign up form">
-                <form id="form">
-                    <label htmlFor="fname">First Name:</label><br/>
-                    <input type="text" id="fname" name="fname" ref={fname}></input><br/>
-                    <label htmlFor="lname">Last Name:</label><br/>
-                    <input type="text" id="lname" name="lname" ref={lname}></input><br/>
-                    <label htmlFor="username">Username:</label><br/>
-                    <input type="text" id="username" name="username" ref={username}></input><br/>
-                    <label htmlFor="fpass">Password:</label><br/>
-                    <input type="password" id="fpass" name="fpass" ref={fpass}></input><br/>
-                    <label htmlFor="lpass">Confirm Password:</label><br/>
-                    <input type="password" id="lpass" name="lpass" ref={lpass}></input><br/>
-
-                    <button type="submit" onClick={SubmitUser}>SIGN UP</button>
-                </form>
-            </div>)
+    return (
+        <div alt="Sign up form" class="d-flex justify-content-center">
+            <form id="form">
+                <fieldset>
+                    <div class="form-group">
+                        <label htmlFor="fname"  class="form-label mt-4">First Name:</label>
+                        <input type="text" class="form-control" id="fname" name="fname" ref={fname} placeholder="Enter your name"></input>
+                    </div>
+                    <div class="form-group">
+                        <label htmlFor="lname" class="form-label mt-4">Last Name:</label>
+                        <input type="text" class="form-control" id="lname" name="lname" ref={lname} placeholder="Enter your last name"></input>
+                    </div>
+                    <div class="form-group">
+                        <label htmlFor="username" class="form-label mt-4">Username:</label><br/>
+                        <input type="text" class="form-control" id="username" name="username" ref={username} aria-describedby="usernameHelp" placeholder="Enter your username"></input>
+                        <small id="usernameHelp" class="form-text text-muted">This will be your identifier, remember it!</small>
+                    </div>
+                    <div class="form-group">
+                        <label htmlFor="fpass" class="form-label mt-4">Password:</label>
+                        <input type="password" class="form-control" id="fpass" name="fpass" ref={fpass} placeholder="Enter your password"></input>
+                        <small id="passwdHelp" class="form-text text-muted">This will be your way in, don't lose it!</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label htmlFor="lpass" class="form-label mt-4">Confirm Password:</label>
+                        <input type="password" class="form-control" id="lpass" name="lpass" ref={lpass} placeholder="Confirm your password"></input>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary" onClick={SubmitUser}>SIGN UP</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    )
 }

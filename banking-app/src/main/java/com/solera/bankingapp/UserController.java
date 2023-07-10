@@ -41,18 +41,43 @@ public class UserController {
 		System.out.println("Post Called");
 		System.out.println(myJson);
 		
-		//JSONDeserializer<User> deserializer = new JSONDeserializer<User>();
-		//System.out.println(deserializer.deserialize(myJson));
-		//User myUser = deserializer.deserialize(myJson);
 		HashMap<String,String> data = parseString(myJson);
 		System.out.println(data);
 		User myUser = new User(data);
 		System.out.println(myUser.toString());
 		
-		User userCreated = dataM.saveOne(myUser);
-		/*URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(userCreated.getUsername()).toUri();
-		return ResponseEntity.created(location).build();*/
-		return userCreated.toString();
+		User userInList = dataM.getOne(myUser.getUsername());
+		User userCreated = null;
+		Boolean exists = false;
+		Boolean passwordCorrect = false;
+		
+		if(userInList==null){
+			System.out.println("User created");
+			userCreated = dataM.saveOne(myUser);
+			exists = false;
+		}
+		else {
+			System.out.println("User loaded");
+			exists = true;
+			
+			System.out.println("User loade Password = "+ userInList.getPassword()+", and new user password = "+ myUser.getPassword());
+			if(userInList.getPassword().equals(myUser.getPassword())) {
+				userCreated = userInList;	
+				passwordCorrect = true;
+			}
+			else {
+				passwordCorrect = false;
+			}
+		}
+		
+		System.out.println(dataM.getAll().toString());
+		
+		if(!exists || (exists && passwordCorrect)) {
+			return "{\"user\":"+userCreated.toString()+", \"status\":"+true+"}";
+		}
+		else {
+			return "{\"user\":"+null+", \"status\":"+false+"}";
+		}
 	}
 	
 	public HashMap<String,String> parseString(String data){

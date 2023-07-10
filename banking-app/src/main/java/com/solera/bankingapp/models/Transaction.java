@@ -48,8 +48,8 @@ public class Transaction {
 	}
 	@Override
 	public String toString() {
-		return "Transaction emitter=" + emitter + ", receptor=" + receptor + ", origin=" + origin + ", destination="
-				+ destination + ", value=" + value;
+		return "{\"emitter\":\"" + emitter + "\", \"receptor\":\"" + receptor + "\", \"origin\":" + origin + ", \"destination\":"
+				+ destination + ", \"value\":" + value+"}";
 	}
 	
 	
