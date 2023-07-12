@@ -1,6 +1,6 @@
-import { myUser } from "../managers/dataManager"; 
+import { saveData, getData, deleteData } from "../managers/dataManager"; 
 import {useRef} from "react";
-import {Post} from "../managers/serverManager"; 
+import {GetUsers, Post} from "../managers/serverManager"; 
 
 export function SignUp() {
 
@@ -9,6 +9,8 @@ export function SignUp() {
     var username = useRef();
     var fpass = useRef();
     var lpass = useRef();
+
+    var myTempUser = {};
 
     function ValidateUser(){
         return(
@@ -27,10 +29,10 @@ export function SignUp() {
     }
 
     function AssignValues(){
-        myUser.firstName = fname.current.value
-        myUser.lastName = lname.current.value
-        myUser.username = username.current.value
-        myUser.password = fpass.current.value
+        myTempUser.firstName = fname.current.value
+        myTempUser.lastName = lname.current.value
+        myTempUser.username = username.current.value
+        myTempUser.password = fpass.current.value
     }
 
     const SubmitUser = async function(event){
@@ -38,23 +40,34 @@ export function SignUp() {
 
         if(ValidateUser() && ValidatePassword()){
             AssignValues();
-            console.log(myUser);
-            var pkg = await Post(myUser)
+            console.log("You entered this user:")
+            console.log(myTempUser);
+            
+            var pkg = await Post(myTempUser)
+            console.log("Package received:")
             console.log(pkg);
 
             if(pkg.status == false){
                 alert("The user already exists and the password is incorrect!")
-                console.log("Mi usuario desactualizado="+myUser.username);
+                console.log("Mi usuario desactualizado="+getData("myUser").username);
             }
             else{
-                myUser.firstName = pkg.user.firstName
+                /*myUser.firstName = pkg.user.firstName
                 myUser.lastName = pkg.user.lastName
                 myUser.username = pkg.user.username
                 myUser.password = pkg.user.password
                 myUser.balance = pkg.user.balance
-                myUser.banks = pkg.user.banks
-                console.log(myUser);
-                //window.location.replace("./personal");
+                myUser.banks = pkg.user.banks*/
+                saveData("myUser", pkg.user);
+
+                console.log("My User:");
+                console.log(getData("myUser"));
+
+                var users = await GetUsers();
+                saveData("users", users)
+                console.log("Server Users:");
+                console.log(getData("users"));
+                window.location.replace("./personal");
             }
         }
         else if(ValidateUser() && !ValidatePassword()){

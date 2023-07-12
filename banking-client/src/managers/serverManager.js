@@ -14,3 +14,11 @@ export async function Post(myUser){
         .then(data => updatedUser = data);*/
     return result;    
 }
+
+export async function GetUsers(){
+
+    const response = await fetch(myServerIP+'users');
+    const result = await response.json();
+    
+    return result;    
+}
