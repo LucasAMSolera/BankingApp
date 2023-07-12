@@ -1,4 +1,4 @@
-import { saveData, getData, deleteData } from "../managers/dataManager"; 
+import { saveData, getData } from "../managers/dataManager"; 
 import {useRef} from "react";
 import {GetUsers, Post} from "../managers/serverManager"; 
 
@@ -47,7 +47,7 @@ export function SignUp() {
             console.log("Package received:")
             console.log(pkg);
 
-            if(pkg.status == false){
+            if(pkg.status === false){
                 alert("The user already exists and the password is incorrect!")
                 console.log("Mi usuario desactualizado="+getData("myUser").username);
             }
