@@ -10,10 +10,10 @@ export function NavBarDisplay(){
                     <div class="collapse navbar-collapse" id="navbarColor01">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" href="../personal">Home</a>
+                            <a class="nav-link active" href="../personal">My Account</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../settings">My Account</a>
+                            <a class="nav-link" href="../settings">Account Settings</a>
                         </li>
                         <li class="nav-item">
                         <   a class="nav-link" href="../bankaccounts">Bank Accounts</a>
@@ -22,9 +22,10 @@ export function NavBarDisplay(){
                             <a class="nav-link" href="../transactions">Transactions</a>
                         </li>
                     </ul>
-                    <form class="d-flex">
-                        <button class="btn btn-secondary my-2 my-sm-0" type="button">Exit</button>
-                    </form>
+                        <a href="../">
+                            <button class="btn btn-secondary my-2 my-sm-0" type="button" >Exit</button>
+                        </a>
+                        
                     </div>
                 </div>
             </nav>

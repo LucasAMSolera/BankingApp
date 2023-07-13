@@ -1,4 +1,4 @@
-const myServerIP='http://localhost:8080/'
+const myServerIP='http://localhost:6060/'
 
 export async function Post(myUser){
     const requestOptions = {
