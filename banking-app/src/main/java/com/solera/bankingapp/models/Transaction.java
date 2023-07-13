@@ -1,10 +1,20 @@
 package com.solera.bankingapp.models;
 
+import java.util.Random;
+
 public class Transaction {
 	private String emitter;
 	private String receptor;
 	private int origin;
 	private int destination;
+	private int id;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	private int value;
 	
 	public String getEmitter() {
@@ -44,12 +54,18 @@ public class Transaction {
 		this.receptor = receptor;
 		this.origin = origin;
 		this.destination = destination;
+		this.id = RandomId();
 		this.value = value;
+	}
+	
+	private int RandomId() {
+		Random rnd = new Random();
+		return rnd.nextInt(99999999-10000000+1)+10000000;
 	}
 	@Override
 	public String toString() {
 		return "{\"emitter\":\"" + emitter + "\", \"receptor\":\"" + receptor + "\", \"origin\":" + origin + ", \"destination\":"
-				+ destination + ", \"value\":" + value+"}";
+				+ destination +", \"id\":" +id+ ", \"value\":" + value+"}";
 	}
 	
 	
