@@ -97,7 +97,8 @@ public class User {
 	
 	private List<BankAccount> FillBanks() {
 		List<BankAccount> banks = new ArrayList<BankAccount>();
-		banks.add(new BankAccount("VVBA Holdings", this.username));
+		banks.add(new BankAccount("VVBA Holdings", this.username, 2));
+		banks.add(new BankAccount("Caixala Society", this.username, 3));
 		return banks;
 	}
 	

@@ -31,17 +31,23 @@ public class BankAccount {
 		this.id = RandomId();
 		this.transactions = transactions;
 	}
-	public BankAccount(String nombre, String emitter) {
+	public BankAccount(String nombre, String emitter, int max) {
 		super();
 		this.nombre = nombre;
 		this.id = RandomId();
-		this.transactions = FillTransactions(emitter);
+		this.transactions = FillTransactions(emitter, max);
 	}
 	
-	private List<Transaction> FillTransactions(String emitter){
+	private List<Transaction> FillTransactions(String emitter, int max){
 		List<Transaction> transactions = new ArrayList<Transaction>();
-		transactions.add(new Transaction(emitter, "jonathan", this.id, 12345678, -200));
+		for(int i=0; i<max; i++) {
+			transactions.add(new Transaction(emitter, "jonathan", this.id, 12345678, RandomInt()));
+		}
 		return transactions;
+	}
+	private int RandomInt() {
+		Random rnd = new Random();
+		return rnd.nextInt(9999+9999+1)-9999;
 	}
 	
 	private int RandomId() {
