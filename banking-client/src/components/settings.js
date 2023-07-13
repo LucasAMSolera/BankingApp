@@ -47,9 +47,12 @@ export function Settings() {
     }
     
     return (
-        <div alt="Sign up form" class="flex-column justify-content-center" style={{padding:8+"%"}}>
+        <div>
+            <nav class="navbar navbar-expand-lg bg-primary text-center flex-column" style={{fontSize:24+"px"}}>
+                <h1 class="text-secondary">Update your user data</h1>
+            </nav>
+            <div alt="Sign up form" class="flex-column justify-content-center" style={{padding:5+"%"}}>
             <div style={{paddingLeft:35+"%", paddingRight:35+"%"}}>
-                <h1 class="text-center">Update your user data</h1>
                 <form id="form">
                 <fieldset>
                         <div class="form-group">
@@ -77,5 +80,7 @@ export function Settings() {
                 </form>
             </div>
         </div>
+        </div>
+        
     )
 }

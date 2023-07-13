@@ -3,11 +3,17 @@ import {getData} from "../managers/dataManager"
 export function BankAccounts()
 {
     return(
-        <div style={{paddingLeft: 30+"%", paddingRight: 30+"%", paddingTop: 10+"%"}}>
+        <div>
+            <nav class="navbar navbar-expand-lg bg-primary text-center flex-column" style={{fontSize:24+"px"}}>
+                <h1 class="text-secondary">Your banks</h1>
+            </nav>
+            <div style={{paddingLeft: 30+"%", paddingRight: 30+"%", paddingTop: 10+"%"}}>
             <div class="font-monospace input-group-text text-center flex-column text-wrap" >
             <h3>{BankIsThere()}</h3>
         </div>
         </div>
+        </div>
+        
         
     )
 }
