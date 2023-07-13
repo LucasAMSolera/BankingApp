@@ -43,40 +43,46 @@ function BankCard()
     if (getData("myUser").banks.length > 0)
     {
         return(
-            <div>
-                <h1>Bank account: </h1>
+            <div class="font-monospace input-group-text text-center flex-column text-wrap">
+                
                 {getData("myUser").banks.map(function(d, idx)
                 {
                     return (
                         <table>
                             <tr>
                                 <th>
-                                    {d.nombre}
+                                    <h1>Bank: </h1>
                                 </th>
                             </tr>
-                            <h1>Transactions:</h1>
+                            <tr>
+                                <th>
+                                    <h3>{d.nombre}</h3>
+                                </th>
+                            </tr>
+                            <h4>Transactions:</h4>
                             <ol>
-                                <li>
-                                    {getData("myUser").banks[idx].transactions.map(function(d, idx)
-                                    {
-                                        return (
-                                            <div>
-                                                <tr>
-                                                    <th>
-                                                        <p>From: {d.emitter} </p>
-                                                    </th>
-                                                    <th>
-                                                        <p>to: {d.receptor}</p>
-                                                    </th>
-                                                    <th>
-                                                        {d.id}
-                                                    </th>
-                                                </tr>
-                                                
-                                            </div>
-                                        )
-                                    })}
-                                </li>
+                                {getData("myUser").banks[idx].transactions.map(function(d, idx)
+                                {
+                                    return (
+                                        <li>
+                                            <tr>
+                                                <th>
+                                                    <p  style={{marginRight:10+"px"}}>From: {d.emitter},</p>
+                                                </th>
+                                                <th>
+                                                    <p  style={{marginRight:10+"px"}}>To: {d.receptor},</p>
+                                                </th>
+                                                <th>
+                                                    <p  style={{marginRight:10+"px"}}>Transaction id: {d.id},</p>
+                                                </th>
+                                                <th>
+                                                    <p  style={{marginRight:10+"px"}} class="fw-bold">Value: {d.value}</p>
+                                                </th>
+                                            </tr>
+                                            
+                                        </li>
+                                    )
+                                })}
                             </ol>
                             
                                 
