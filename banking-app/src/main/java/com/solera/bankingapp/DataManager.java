@@ -25,6 +25,25 @@ public class DataManager {
 		return users.stream().filter(predicate).findFirst().orElse(null);
 	}
 	
+	public User updateOne(String id, String name, String surname, String pass, String newPass) {
+		Predicate<? super User> predicate = user -> user.getUsername().equals(id);
+		User theUser = users.stream().filter(predicate).findFirst().orElse(null);
+		System.out.println(theUser);
+		if(!theUser.getPassword().equals(pass)) {
+			return null;
+		}
+		if(theUser != null) {
+			int position = users.indexOf(theUser);
+			theUser.setFirstName(name);
+			theUser.setLastName(surname);
+			if(!newPass.equals("")) {
+				theUser.setPassword(newPass);
+			}
+			users.set(position, theUser);
+		}
+		return theUser;
+	}
+	
 	public User saveOne(User myUser) {
 		users.add(myUser);
 		return myUser;

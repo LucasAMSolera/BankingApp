@@ -15,6 +15,21 @@ export async function Post(myUser){
     return result;    
 }
 
+export async function Put(myUser){
+    const requestOptions = {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(myUser)
+    };
+    const response = await fetch(myServerIP+'user/update', requestOptions);
+    const result = await response.json();
+
+    /*
+        .then(response => response.json())
+        .then(data => updatedUser = data);*/
+    return result;    
+}
+
 export async function GetUsers(){
 
     const response = await fetch(myServerIP+'users');

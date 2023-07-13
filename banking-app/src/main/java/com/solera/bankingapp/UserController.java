@@ -13,6 +13,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.solera.bankingapp.models.User;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.util.HashMap;
@@ -35,6 +36,31 @@ public class UserController {
 	public String listAllUsers ()
 	{
 		return dataM.getAll().toString();
+	}
+	@PutMapping("/user/update")
+	public String updateUser (@RequestBody String myJson)
+	{
+		System.out.println("Put Called");
+		System.out.println(myJson);
+		
+		HashMap<String,String> data = parseString(myJson);
+		System.out.println(data);
+		
+		User userUpdated=null;
+		
+		if(data.get("newPassword") != null) {
+			userUpdated = dataM.updateOne(data.get("username"), data.get("firstName"), data.get("lastName"), data.get("password"), data.get("newPassword"));
+		}
+		else {
+			userUpdated = dataM.updateOne(data.get("username"), data.get("firstName"), data.get("lastName"), data.get("password"), "");
+		}
+		
+		if(userUpdated != null) {
+			return "{\"user\":"+userUpdated.toString()+", \"status\":"+true+"}";
+		}
+		else {
+			return "{\"user\":"+null+", \"status\":"+false+"}";
+		}
 	}
 	@PostMapping("/users/create")
 	public String/*ResponseEntity<Object>*/ createUser(@RequestBody String myJson){

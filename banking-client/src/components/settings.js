@@ -1,4 +1,5 @@
-import {getData} from "../managers/dataManager"
+import {getData, saveData} from "../managers/dataManager"
+import { Put } from "../managers/serverManager";
 import {useRef} from "react";
 export function Settings() {
 
@@ -9,10 +10,40 @@ export function Settings() {
 
     var myTempUser = {};
 
-    
+    function AssignValues(){
+        myTempUser.firstName = fname.current.value
+        myTempUser.lastName = lname.current.value
+        myTempUser.username = getData("myUser").username;
+        if(npass.current.value != ""){
+            myTempUser.newPassword = npass.current.value
+        }
+        myTempUser.password = pass.current.value
+    }
 
     const UpdateUser = async function(event){
         event.preventDefault();
+        AssignValues();
+        console.log(myTempUser);
+        var pkg = await Put(myTempUser)
+        console.log("Package received:")
+        console.log(pkg);
+
+        if(pkg.status === false){
+            alert("The password is incorrect!")
+        }
+        else{
+            /*myUser.firstName = pkg.user.firstName
+            myUser.lastName = pkg.user.lastName
+            myUser.username = pkg.user.username
+            myUser.password = pkg.user.password
+            myUser.balance = pkg.user.balance
+            myUser.banks = pkg.user.banks*/
+            saveData("myUser", pkg.user);
+
+            console.log("My User:");
+            console.log(getData("myUser"));
+            window.location.replace("./personal");
+        }
     }
     
     return (
